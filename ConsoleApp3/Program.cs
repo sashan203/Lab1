@@ -11,8 +11,20 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
             Console.WriteLine("Введите размер массива  ");
-            int size = Convert.ToInt32(Console.ReadLine()); //в переменную size записывается число которое ввёл пользователь
-            double[] numbers = new double[size]; //создаётся массив с размером соответствующим числу, которое ввёл пользователь
+            //int size = Convert.ToInt32(Console.ReadLine());//в переменную size записывается число которое ввёл пользователь
+
+            int X;
+
+            String size = Console.ReadLine();
+
+            while (!Int32.TryParse(size, out X))//цикл пока не будет введено действительное число
+            {
+                Console.WriteLine("НЕКОРРЕКТНЫЙ ВВОД");
+
+                size = Console.ReadLine();
+            }
+        
+            double[] numbers = new double[X]; //создаётся массив с размером соответствующим числу, которое ввёл пользователь
             FillArrayRandomNumbers(numbers); //вызов функции
             Console.WriteLine("массив: ");
             PrintArray(numbers);
